@@ -1,0 +1,47 @@
+name: eventful
+try_name: msrvtt
+dataset: msrvtt
+base_model_name: openai/clip-vit-base-patch16
+fps: 1
+batch_size: 18
+num_frames: 5
+use_cos_sim_loss: true
+use_fixed_pattern: true
+ref_type: p4_p2n2_p1n1
+lr_patience: 15
+patience: 30
+
+# Optimizer
+restoration_lr: 0.0001
+blobnet_lr: 0.02
+decision_lr: 0.01
+
+# Dataset
+frame_stack_pattern: [0]
+use_coded_order: false
+
+# Decision Module
+decision_type: 'topk'
+decision_hyperparam: 10
+disable_final_tanh: true
+
+# Gating Module
+gating_type: 'hard'
+
+# BlobNet
+use_compressed_info: false
+
+# Similarity Module:
+# e.g., 'headwise-cosine^2', 'cosine^1', 'l2', 'sad'
+similarity_type: 'local_l2'
+
+# Importance Module:
+# e.g., 'cls^1', 'zerotprune', 'none'
+importance_type: 'none'
+
+# Restoration Module:
+restoration_type: 'passthrough'
+
+reuse_start: 'before_qkv'
+
+reference_type: 'first_only'

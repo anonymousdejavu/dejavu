@@ -1,0 +1,9 @@
+[submodule "third_parties/FrozenBiLM"]
+	path = third_parties/FrozenBiLM
+	url = https://github.com/anonymous-dejavu/FrozenBiLM
+[submodule "third_parties/DiffRate"]
+	path = third_parties/DiffRate
+	url = https://github.com/anonymous-dejavu/DiffRate.git
+[submodule "third_parties/CLIP4Clip"]
+	path = third_parties/CLIP4Clip
+	url = https://github.com/anonymous-dejavu/CLIP4Clip

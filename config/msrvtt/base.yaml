@@ -1,0 +1,62 @@
+name: msrvtt
+try_name: base
+dataset: msrvtt
+base_model_name: openai/clip-vit-base-patch16
+fps: 2
+batch_size: 18
+num_frames: 5
+use_cos_sim_loss: true
+use_min_cos_sim_loss: true
+use_fixed_pattern: true
+ref_type: p4_p2n2_p1n1
+lr_patience: 15
+lr_scheduler: 'cosine'
+lr_exponential_gamma: 0.975
+patience: 30
+epochs: 50
+
+# Optimizer
+restoration_lr: 5e-5
+blobnet_lr: 5e-4
+decision_lr: 5e-5
+
+# Dataset
+frame_stack_pattern: [0, 4, 8, 12, 11, 9]
+use_coded_order: False
+# disable_mask: True
+train_dataset_step: 8
+
+# Loss
+sloss_scaler: 1.
+rloss_scaler: 0.045
+target_similarity: 0.97
+rloss_pattern: [False, False, True, True, True]
+sloss_pattern: [False, False, True, True, True]
+
+# Decision Module
+decision_type: 'mlp'
+decision_mlp_out_dim: 2
+decision_mlp_use_norm: False
+decision_initialize: 'adafuse'
+
+# Gating Module
+gating_type: 'adafuse'
+gating_hyperparam: 0.025  # not used when gating_scheduling is True.
+
+# BlobNet
+use_compressed_info: true
+use_shared_blobnet: true
+use_blobnet_tanh: true
+num_blobnet_outputs: 1
+use_onehot: True
+
+# Similarity Module:
+# e.g., 'headwise-cosine^2', 'cosine^1', 'l2'
+similarity_type: 'local_cosine^1'
+
+# Importance Module:
+importance_type: 'cls^1'
+
+# Restoration Module:
+restoration_type: 'mlp'
+restoration_mlp_disable_bias: True

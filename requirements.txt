@@ -1,0 +1,21 @@
+python-box
+wandb
+pyyaml
+ray
+# might need to run apt install libgl1-mesa-glx or conda install mesalib
+# instead, ended up find $CONDA_PREFIX -name libGL.so.1 and linking it to $CONDA_PREFIX/lib/libGL.so.1
+opencv-python
+accelerate
+# Had to downgrade opencv to opencv<4.6, python=3.10 with conda install opencv<4.6
+# motion-vector-extractor
+Pillow
+torchvision
+pandas
+joblib
+transformers
+peft
+datasets
+yt-dlp[default]
+# motion-vector-extractor
+termplotlib
+matplotlib
